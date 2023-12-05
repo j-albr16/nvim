@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
     use { 'github/copilot.vim' }
     use { 'ThePrimeagen/harpoon',
         config = [[require('config.harpoon')]],
+        branch = 'harpoon2',
         requires = { {"nvim-lua/plenary.nvim"} }}
     use { 'mbbill/undotree', config = [[require('config.undotree')]]}
     use { 'neovim/nvim-lspconfig' }
