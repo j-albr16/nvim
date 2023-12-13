@@ -5,7 +5,7 @@ local lsp_servers = {
     'rust_analyzer',
     'tsserver',
     'html',
-    'yamlls'
+    'yamlls',
 }
 
 
@@ -47,11 +47,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>rf', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<leader>dl', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<leader>dh', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', '<leader>f', function()
         print("formatting")
         vim.lsp.buf.format { async = true }

@@ -2,8 +2,15 @@
 
 local harpoon = require("harpoon")
 
+local settings = {
+    global_settings = {
+        save_on_toggle = true,
+        save_on_change = true,
+    },
+}
+
 -- REQUIRED
-harpoon:setup()
+harpoon:setup(settings)
 -- REQUIRED
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
