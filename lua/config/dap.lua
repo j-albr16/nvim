@@ -1,4 +1,3 @@
-
 local dap = require('dap')
 local dap_python = require('dap-python')
 local dap_project = require('nvim-dap-projects')
@@ -12,14 +11,14 @@ dap_python.setup('~/.config/nvim/.virtualenvs/debugpy/bin/python')
 dap_python.test_runner = 'pytest'
 
 
-local opts = { noremap = true, silent = true, prefix = '<leader>', mode = {'n', 'v'} }
+local opts = { noremap = true, silent = true, prefix = '<leader>', mode = { 'n', 'v' } }
 
-local debug_method = function ()
+local debug_method = function()
     dap_python.test_method()
     dapui.open()
 end
 
-local debug_class = function ()
+local debug_class = function()
     dap_python.test_class()
     dapui.open()
 end
@@ -45,7 +44,7 @@ local mapping = {
 }
 wk.register(mapping, opts)
 
-opts = {noremap = true, silent = true}
+opts = { noremap = true, silent = true }
 
 -- short keymaps
 vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, opts)
@@ -53,30 +52,57 @@ vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, opts)
 -- ui
 dapui.setup {
     layouts = { {
-        elements = { {
-            id = "scopes",
-            size = 0.25
-          }, {
-            id = "breakpoints",
-            size = 0.25
-          }, {
-            id = "stacks",
-            size = 0.25
-          }, {
-            id = "watches",
-            size = 0.25
-          } },
+        elements = {
+            {
+                id = "breakpoints",
+                size = 0.25
+            },
+            {
+                id = "console",
+                size = 0.75
+            }
+        },
         position = "left",
-        size = 40
-      }, {
+        size = 60
+    }, {
         elements = { {
-            id = "console",
+            id = "repl",
             size = 1.
-          } },
+        } },
         position = "bottom",
         size = 13
-      } },
-} -- use default
+    } },
+}
+
+-- dapui.setup {
+--     layouts = { {
+--         elements = { {
+--             id = "scopes",
+--             size = 0.25
+--           }, {
+--             id = "breakpoints",
+--             size = 0.25
+--           }, {
+--             id = "stacks",
+--             size = 0.25
+--           }, {
+--             id = "watches",
+--             size = 0.25
+--           } },
+--         position = "left",
+--         size = 40
+--       }, {
+--         elements = { {
+--             id = "console",
+--             size = 1.
+--           } },
+--         position = "bottom",
+--         size = 13
+--       } },
+-- }
+--
+
+-- use default
 -- dap.listeners.after.event_initialized["dapui_config"] = function()
 --     dapui.open()
 -- end
@@ -86,4 +112,3 @@ dapui.setup {
 -- dap.listeners.before.event_exited["dapui_config"] = function()
 --   dapui.close()
 -- end
-

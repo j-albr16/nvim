@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
     use { 'ThePrimeagen/harpoon',
         config = [[require('config.harpoon')]],
         branch = 'harpoon2',
+        -- branch = 'master',
         requires = { {"nvim-lua/plenary.nvim"} }}
     use { 'mbbill/undotree', config = [[require('config.undotree')]]}
     use { 'neovim/nvim-lspconfig' }
