@@ -1,13 +1,13 @@
 local harpoon = require('harpoon')
 
-local global_settings = {
+local settings = {
     save_on_toggle = true,
-    save_on_change = true,
+    sync_on_ui_close = true,
 }
 
 -- REQUIRED
 harpoon:setup({
-    global_settings = global_settings
+    settings = settings
 })
 -- REQUIRED
 

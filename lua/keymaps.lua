@@ -1,7 +1,7 @@
 -- define common options
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+    noremap = true, -- non-recursive
+    silent = true,  -- do not show message
 }
 
 ------------------
@@ -42,23 +42,24 @@ vim.keymap.set('v', '>', '>gv', opts)
 
 vim.keymap.set('v', "J", ":m '>+1<CR>gv'", opts)
 vim.keymap.set('v', "K", ":m '<-2<CR>gv'", opts)
-vim.keymap.set('v', '<leader>s', ':%s/<CR>//g<Left><Left>', opts)
+
+local search_and_replace = function()
+    local first = vim.fn.input('First: ')
+    local second = vim.fn.input('Second: ')
+    local cmd = ":'<,'>s/" .. first .. "/" .. second .. "/gc"
+    vim.cmd(cmd)
+end
+
+vim.keymap.set('v', '<leader>s', search_and_replace, opts)
 
 -- search
 local wk = require('which-key')
-local opts = { prefix="<leader>" }
+local opts = { prefix = "<leader>" }
 local mapping = {
     s = {
         name = "search",
-        r = {":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>", "Search and Replace Word"},
-        a = {":cdo! %s///gc<left><left><left><left>", "Search and Replace all"},
+        r = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>", "Search and Replace Word" },
+        a = { ":cdo! %s///gc<left><left><left><left>", "Search and Replace all" },
     },
 }
 wk.register(mapping, opts)
-
-
-
-
-
-
-
