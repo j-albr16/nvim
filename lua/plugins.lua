@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
     use 'honza/vim-snippets'
     use 'quangnguyen30192/cmp-nvim-ultisnips'
     use 'wbthomason/packer.nvim'
-    use {'folke/which-key.nvim', config = [[require('config.which-key')]]}
+    use { 'folke/which-key.nvim', config = [[require('config.which-key')]] }
     use 'BurntSushi/ripgrep'
     use 'tanvirtin/monokai.nvim'
     use { "terrortylor/nvim-comment", config = [[require('config.nvim_comment')]] }
@@ -59,8 +59,8 @@ return require('packer').startup(function(use)
         config = [[require('config.harpoon')]],
         branch = 'harpoon2',
         -- branch = 'master',
-        requires = { {"nvim-lua/plenary.nvim"} }}
-    use { 'mbbill/undotree', config = [[require('config.undotree')]]}
+        requires = { { "nvim-lua/plenary.nvim" } } }
+    use { 'mbbill/undotree', config = [[require('config.undotree')]] }
     use { 'neovim/nvim-lspconfig' }
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
@@ -82,6 +82,14 @@ return require('packer').startup(function(use)
             'ldelossa/nvim-dap-projects'
         }
     }
+
+    use {'jose-elias-alvarez/null-ls.nvim', config = [[require('config.null-ls')]]}
+    use { 'MunifTanjim/prettier.nvim',
+        -- run = 'yarn install',
+        config = [[require('config.prettier')]]
+    }
+    use { "folke/zen-mode.nvim", config = [[require('config.zen-mode')]] }
+    use {"windwp/nvim-ts-autotag", config = [[require('config.ts-autotags')]]}
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim

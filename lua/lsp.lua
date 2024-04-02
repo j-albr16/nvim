@@ -3,9 +3,12 @@ local lsp_servers = {
     'pylsp',
     'lua_ls',
     'rust_analyzer',
+    'clangd',
     'tsserver',
     'html',
     'yamlls',
+    'tailwindcss',
+    'lemminx',
 }
 
 
@@ -73,6 +76,15 @@ lspconfig.pylsp.setup({
     }
 })
 
+lspconfig.clangd.setup {}
+
+lspconfig.tsserver.setup {
+    on_attach = on_attach,
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    cmd = { "typescript-language-server", "--stdio" }
+}
+
+lspconfig.tailwindcss.setup {}
 
 lspconfig.lua_ls.setup {
     on_attach = on_attach,
@@ -83,4 +95,8 @@ lspconfig.lua_ls.setup {
             }
         }
     }
+}
+
+lspconfig.lemminx.setup {
+    on_attach = on_attach,
 }
