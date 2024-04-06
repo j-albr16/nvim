@@ -36,6 +36,7 @@ vim.cmd([[
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+    use { "nvim-neotest/nvim-nio" }
     use { 'SirVer/ultisnips', config = [[require('config.ultisnips')]] }
     use 'honza/vim-snippets'
     use 'quangnguyen30192/cmp-nvim-ultisnips'
@@ -72,6 +73,7 @@ return require('packer').startup(function(use)
     use { 'L3MON4D3/LuaSnip' }
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'tpope/vim-fugitive', config = [[require('config.vim-fugitive')]] }
+    use 'junegunn/gv.vim'
     use { "akinsho/toggleterm.nvim", tag = '*', config = [[require('config.terminal')]] }
     use 'folke/neodev.nvim'
     use { 'nvim-treesitter/nvim-treesitter', config = [[require('config.treesitter')]] }
@@ -90,6 +92,7 @@ return require('packer').startup(function(use)
     }
     use { "folke/zen-mode.nvim", config = [[require('config.zen-mode')]] }
     use {"windwp/nvim-ts-autotag", config = [[require('config.ts-autotags')]]}
+    use {'lervag/vimtex', config= [[require('config.vimtex')]] }
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim

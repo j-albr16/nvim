@@ -126,6 +126,11 @@ _G.packer_plugins = {
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["gv.vim"] = {
+    loaded = true,
+    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/gv.vim",
+    url = "https://github.com/junegunn/gv.vim"
+  },
   harpoon = {
     config = { "require('config.harpoon')" },
     loaded = true,
@@ -164,7 +169,7 @@ _G.packer_plugins = {
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-cmdline", "cmp-nvim-lsp", "cmp-path" },
+    after = { "cmp-nvim-lsp", "cmp-cmdline", "cmp-path", "cmp-buffer" },
     config = { "require('config.nvim-cmp')" },
     loaded = true,
     only_config = true,
@@ -202,6 +207,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
   },
   ["nvim-treesitter"] = {
     config = { "require('config.treesitter')" },
@@ -271,6 +281,12 @@ _G.packer_plugins = {
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/vim-snippets",
     url = "https://github.com/honza/vim-snippets"
   },
+  vimtex = {
+    config = { "require('config.vimtex')" },
+    loaded = true,
+    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
+  },
   ["which-key.nvim"] = {
     config = { "require('config.which-key')" },
     loaded = true,
@@ -286,71 +302,75 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-fugitive
-time([[Config for vim-fugitive]], true)
-require('config.vim-fugitive')
-time([[Config for vim-fugitive]], false)
--- Config for: nvim-comment
-time([[Config for nvim-comment]], true)
-require('config.nvim_comment')
-time([[Config for nvim-comment]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('config.treesitter')
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-require('config.dap')
-time([[Config for nvim-dap]], false)
--- Config for: undotree
-time([[Config for undotree]], true)
-require('config.undotree')
-time([[Config for undotree]], false)
--- Config for: nvim-ts-autotag
-time([[Config for nvim-ts-autotag]], true)
-require('config.ts-autotags')
-time([[Config for nvim-ts-autotag]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('config.terminal')
-time([[Config for toggleterm.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require('config.telescope')
-time([[Config for telescope.nvim]], false)
--- Config for: zen-mode.nvim
-time([[Config for zen-mode.nvim]], true)
-require('config.zen-mode')
-time([[Config for zen-mode.nvim]], false)
--- Config for: harpoon
-time([[Config for harpoon]], true)
-require('config.harpoon')
-time([[Config for harpoon]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require('config.null-ls')
-time([[Config for null-ls.nvim]], false)
--- Config for: ultisnips
-time([[Config for ultisnips]], true)
-require('config.ultisnips')
-time([[Config for ultisnips]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require('config.nvim-cmp')
-time([[Config for nvim-cmp]], false)
 -- Config for: prettier.nvim
 time([[Config for prettier.nvim]], true)
 require('config.prettier')
 time([[Config for prettier.nvim]], false)
+-- Config for: nvim-comment
+time([[Config for nvim-comment]], true)
+require('config.nvim_comment')
+time([[Config for nvim-comment]], false)
+-- Config for: harpoon
+time([[Config for harpoon]], true)
+require('config.harpoon')
+time([[Config for harpoon]], false)
+-- Config for: nvim-ts-autotag
+time([[Config for nvim-ts-autotag]], true)
+require('config.ts-autotags')
+time([[Config for nvim-ts-autotag]], false)
+-- Config for: ultisnips
+time([[Config for ultisnips]], true)
+require('config.ultisnips')
+time([[Config for ultisnips]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require('config.telescope')
+time([[Config for telescope.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require('config.null-ls')
+time([[Config for null-ls.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('config.treesitter')
+time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('config.nvim-cmp')
+time([[Config for nvim-cmp]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('config.terminal')
+time([[Config for toggleterm.nvim]], false)
+-- Config for: vim-fugitive
+time([[Config for vim-fugitive]], true)
+require('config.vim-fugitive')
+time([[Config for vim-fugitive]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+require('config.undotree')
+time([[Config for undotree]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 require('config.which-key')
 time([[Config for which-key.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require('config.dap')
+time([[Config for nvim-dap]], false)
+-- Config for: vimtex
+time([[Config for vimtex]], true)
+require('config.vimtex')
+time([[Config for vimtex]], false)
+-- Config for: zen-mode.nvim
+time([[Config for zen-mode.nvim]], true)
+require('config.zen-mode')
+time([[Config for zen-mode.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd cmp-cmdline ]]
-vim.cmd [[ packadd cmp-path ]]
 vim.cmd [[ packadd cmp-nvim-lsp ]]
+vim.cmd [[ packadd cmp-path ]]
 vim.cmd [[ packadd cmp-buffer ]]
 time([[Sequenced loading]], false)
 
