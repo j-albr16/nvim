@@ -9,6 +9,7 @@ local lsp_servers = {
     'yamlls',
     'tailwindcss',
     'lemminx',
+    'jsonls',
 }
 
 
@@ -59,6 +60,10 @@ local on_attach = function(client, bufnr)
     end, opts)
 end
 
+lspconfig.html.setup {
+    on_attach = on_attach,
+}
+
 lspconfig.pylsp.setup({
     on_attach = on_attach,
     init_options = {
@@ -76,11 +81,22 @@ lspconfig.pylsp.setup({
     }
 })
 
+lspconfig.jsonls.setup {
+    on_attach = on_attach,
+    commands = {
+        Format = {
+            function()
+                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+            end
+        }
+    }
+}
+
 lspconfig.clangd.setup {}
 
 lspconfig.tsserver.setup {
     on_attach = on_attach,
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
     cmd = { "typescript-language-server", "--stdio" }
 }
 

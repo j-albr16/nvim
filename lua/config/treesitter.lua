@@ -6,8 +6,11 @@ require 'nvim-treesitter.configs'.setup {
     autotag = {
         enable = true,
     },
-    ensure_installed = { "tsx", "html", "c", "lua", "vim", "vimdoc", "query", "python" },
-    inore_install= {'javascript'}
+    highlight = {
+        enable = true,
+    },
+    ensure_installed = { "html", "c", "lua", "vim", "vimdoc", "query", "python"  },
+    inore_install= {'javascript', 'typescript', 'tsx'}
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
