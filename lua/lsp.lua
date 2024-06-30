@@ -10,6 +10,7 @@ local lsp_servers = {
     'tailwindcss',
     'lemminx',
     'jsonls',
+    'eslint',
 }
 
 
@@ -116,3 +117,12 @@ lspconfig.lua_ls.setup {
 lspconfig.lemminx.setup {
     on_attach = on_attach,
 }
+
+lspconfig.eslint.setup({
+    on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+        })
+    end,
+})

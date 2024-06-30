@@ -85,7 +85,7 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {'jose-elias-alvarez/null-ls.nvim', config = [[require('config.null-ls')]]}
+    -- use {'jose-elias-alvarez/null-ls.nvim', config = [[require('config.null-ls')]]}
     use { 'MunifTanjim/prettier.nvim',
         -- run = 'yarn install',
         config = [[require('config.prettier')]]

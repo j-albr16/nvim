@@ -162,14 +162,8 @@ _G.packer_plugins = {
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
-  ["null-ls.nvim"] = {
-    config = { "require('config.null-ls')" },
-    loaded = true,
-    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-cmdline", "cmp-nvim-lsp", "cmp-path" },
+    after = { "cmp-cmdline", "cmp-nvim-lsp", "cmp-path", "cmp-buffer" },
     config = { "require('config.nvim-cmp')" },
     loaded = true,
     only_config = true,
@@ -302,6 +296,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require('config.dap')
+time([[Config for nvim-dap]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require('config.treesitter')
@@ -310,10 +308,10 @@ time([[Config for nvim-treesitter]], false)
 time([[Config for telescope.nvim]], true)
 require('config.telescope')
 time([[Config for telescope.nvim]], false)
--- Config for: prettier.nvim
-time([[Config for prettier.nvim]], true)
-require('config.prettier')
-time([[Config for prettier.nvim]], false)
+-- Config for: nvim-ts-autotag
+time([[Config for nvim-ts-autotag]], true)
+require('config.ts-autotags')
+time([[Config for nvim-ts-autotag]], false)
 -- Config for: vimtex
 time([[Config for vimtex]], true)
 require('config.vimtex')
@@ -322,10 +320,10 @@ time([[Config for vimtex]], false)
 time([[Config for toggleterm.nvim]], true)
 require('config.terminal')
 time([[Config for toggleterm.nvim]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require('config.null-ls')
-time([[Config for null-ls.nvim]], false)
+-- Config for: harpoon
+time([[Config for harpoon]], true)
+require('config.harpoon')
+time([[Config for harpoon]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 require('config.which-key')
@@ -350,27 +348,19 @@ time([[Config for undotree]], false)
 time([[Config for nvim-comment]], true)
 require('config.nvim_comment')
 time([[Config for nvim-comment]], false)
--- Config for: nvim-ts-autotag
-time([[Config for nvim-ts-autotag]], true)
-require('config.ts-autotags')
-time([[Config for nvim-ts-autotag]], false)
+-- Config for: prettier.nvim
+time([[Config for prettier.nvim]], true)
+require('config.prettier')
+time([[Config for prettier.nvim]], false)
 -- Config for: vim-fugitive
 time([[Config for vim-fugitive]], true)
 require('config.vim-fugitive')
 time([[Config for vim-fugitive]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-require('config.dap')
-time([[Config for nvim-dap]], false)
--- Config for: harpoon
-time([[Config for harpoon]], true)
-require('config.harpoon')
-time([[Config for harpoon]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd cmp-nvim-lsp ]]
-vim.cmd [[ packadd cmp-buffer ]]
 vim.cmd [[ packadd cmp-cmdline ]]
+vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd cmp-nvim-lsp ]]
 vim.cmd [[ packadd cmp-path ]]
 time([[Sequenced loading]], false)
 
