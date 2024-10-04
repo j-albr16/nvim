@@ -41,6 +41,8 @@ return require('packer').startup(function(use)
     use 'honza/vim-snippets'
     use 'quangnguyen30192/cmp-nvim-ultisnips'
     use 'wbthomason/packer.nvim'
+    use 'nvim-tree/nvim-web-devicons'
+    use 'echasnovski/mini.icons'
     use { 'folke/which-key.nvim', config = [[require('config.which-key')]] }
     use 'BurntSushi/ripgrep'
     use 'tanvirtin/monokai.nvim'
@@ -50,8 +52,8 @@ return require('packer').startup(function(use)
         run = function() vim.fn["mkdp#util#install"]() end,
     })
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        -- or                            , branch = '0.1.x',
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } },
         config = [[require('config.telescope')]]
     }
@@ -72,7 +74,14 @@ return require('packer').startup(function(use)
     use { 'williamboman/mason-lspconfig.nvim' }
     use { 'L3MON4D3/LuaSnip' }
     use { 'saadparwaiz1/cmp_luasnip' }
-    use { 'tpope/vim-fugitive', config = [[require('config.vim-fugitive')]] }
+    -- use { 'tpope/vim-fugitive', config = [[require('config.vim-fugitive')]] }
+    use { "NeogitOrg/neogit",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+        },
+        config = [[require('config.neogit')]]
+    }
     use 'junegunn/gv.vim'
     use { "akinsho/toggleterm.nvim", tag = '*', config = [[require('config.terminal')]] }
     use 'folke/neodev.nvim'
@@ -85,14 +94,32 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- use {'jose-elias-alvarez/null-ls.nvim', config = [[require('config.null-ls')]]}
     use { 'MunifTanjim/prettier.nvim',
         -- run = 'yarn install',
         config = [[require('config.prettier')]]
     }
     use { "folke/zen-mode.nvim", config = [[require('config.zen-mode')]] }
-    use {"windwp/nvim-ts-autotag", config = [[require('config.ts-autotags')]]}
-    use {'lervag/vimtex', config= [[require('config.vimtex')]] }
+    use { "windwp/nvim-ts-autotag", config = [[require('config.ts-autotags')]] }
+    use { 'lervag/vimtex', config = [[require('config.vimtex')]] }
+    use { 'stevearc/oil.nvim', config = [[require('config.oil')]] }
+    use({
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+        -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+        -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    })
+    use {
+        "epwalsh/obsidian.nvim",
+        tag = "*",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = [[require('config.obsidian')]],
+    }
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim

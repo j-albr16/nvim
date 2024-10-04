@@ -3,6 +3,10 @@ local dap_python = require('dap-python')
 local dap_project = require('nvim-dap-projects')
 local wk = require('which-key')
 local dapui = require "dapui"
+local widgets = require('dap.ui.widgets')
+
+local widget_view = widgets.centered_float(widgets.scopes)
+widget_view.close()
 
 dap_project.config_paths = { './nvim-dap.lua' }
 dap_project.search_project_config()
@@ -11,7 +15,6 @@ dap_python.setup('~/.config/nvim/.virtualenvs/debugpy/bin/python')
 dap_python.test_runner = 'pytest'
 
 
-local opts = { noremap = true, silent = true, prefix = '<leader>', mode = { 'n', 'v' } }
 
 local debug_method = function()
     dap_python.test_method()
@@ -24,27 +27,36 @@ local debug_class = function()
 end
 
 local mapping = {
-    d = {
-        name = 'Debug',
-        b = { dap.toggle_breakpoint, 'Toggle Breakpoint' },
-        o = { dap.step_over, 'Step Out' },
-        i = { dap.step_into, 'Step Into' },
-        u = { dapui.toggle, 'Toggle Dap Ui' },
-        q = { dapui.close, 'Terminate Dap Ui' },
-        c = { debug_class, 'Test Class' },
-        m = { debug_method, 'Debug Method' },
-        s = { dap_python.debug_selection, 'Debug Selection' },
-        l = { dap.run_last, 'Debug Last' },
-        k = { vim.diagnostic.goto_next, 'Next Diagnostic' },
-        j = { vim.diagnostic.goto_prev, 'Previous Diagnostic' },
+    {
+        desc = 'Debug',
+        mode = 'n',
+        { '<leader>db', dap.toggle_breakpoint, desc = 'Toggle Breakpoint' },
+        { '<leader>do', dap.step_out,          desc = 'Step Out' },
+        { '<leader>di', dap.step_into,         desc = 'Step Into' },
+        {
+            '<leader>df',
+            function()
+                widget_view.toggle()
+            end,
+            desc = 'Open Floating Scopes'
+        },
+        { '<leader>du', dapui.toggle,               desc = 'Toggle Dap Ui' },
+        { '<leader>dq', dapui.close,                desc = 'Terminate Dap Ui' },
+        { '<leader>dc', debug_class,                desc = 'Test Class' },
+        { '<leader>dm', debug_method,               desc = 'Debug Method' },
+        { '<leader>ds', dap_python.debug_selection, desc = 'Debug Selection' },
+        { '<leader>dl', dap.run_last,               desc = 'Debug Last' },
+        { '<leader>dk', vim.diagnostic.goto_next,   desc = 'Next Diagnostic' },
+        { '<leader>dj', vim.diagnostic.goto_prev,   desc = 'Previous Diagnostic' },
     },
-    ["r"] = { dap.repl.toggle, 'Open Repl' },
-    ["c"] = { dap.continue, 'Continue' },
-    ["o"] = { dap.step_over, 'Step Over' },
+    { '<leader>r', dap.repl.toggle, desc = 'Open Repl' },
+    { '<leader>c', dap.continue,    desc = 'Continue' },
+    { '<leader>O', dap.step_over,   desc = 'Step Over' },
 }
-wk.register(mapping, opts)
 
-opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
+wk.add(mapping, opts)
+
 
 -- short keymaps
 vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, opts)
@@ -73,42 +85,3 @@ dapui.setup {
         size = 13
     } },
 }
-
--- dapui.setup {
---     layouts = { {
---         elements = { {
---             id = "scopes",
---             size = 0.25
---           }, {
---             id = "breakpoints",
---             size = 0.25
---           }, {
---             id = "stacks",
---             size = 0.25
---           }, {
---             id = "watches",
---             size = 0.25
---           } },
---         position = "left",
---         size = 40
---       }, {
---         elements = { {
---             id = "console",
---             size = 1.
---           } },
---         position = "bottom",
---         size = 13
---       } },
--- }
---
-
--- use default
--- dap.listeners.after.event_initialized["dapui_config"] = function()
---     dapui.open()
--- end
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---   dapui.close()
--- end
--- dap.listeners.before.event_exited["dapui_config"] = function()
---   dapui.close()
--- end

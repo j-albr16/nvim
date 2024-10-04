@@ -4,7 +4,7 @@ local lsp_servers = {
     'lua_ls',
     'rust_analyzer',
     'clangd',
-    'tsserver',
+    'ts_ls',
     'html',
     'yamlls',
     'tailwindcss',
@@ -95,7 +95,7 @@ lspconfig.jsonls.setup {
 
 lspconfig.clangd.setup {}
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
     on_attach = on_attach,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
     cmd = { "typescript-language-server", "--stdio" }

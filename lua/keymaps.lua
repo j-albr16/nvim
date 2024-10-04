@@ -54,12 +54,12 @@ vim.keymap.set('v', '<leader>s', search_and_replace, opts)
 
 -- search
 local wk = require('which-key')
-local opts = { prefix = "<leader>" }
 local mapping = {
-    s = {
-        name = "search",
-        r = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>", "Search and Replace Word" },
-        a = { ":cdo! %s///gc<left><left><left><left>", "Search and Replace all" },
-    },
+    desc = "Search",
+    {
+        { '<leader>sr', ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>", desc = "Search and Replace Word" },
+        { '<leader>sa', ":cdo! %s///gc<left><left><left><left>",                desc = "Search and Replace all" },
+    }
 }
-wk.register(mapping, opts)
+
+wk.add(mapping)
