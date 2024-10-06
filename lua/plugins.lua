@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
     use { 'williamboman/mason-lspconfig.nvim' }
     use { 'L3MON4D3/LuaSnip' }
     use { 'saadparwaiz1/cmp_luasnip' }
-    -- use { 'tpope/vim-fugitive', config = [[require('config.vim-fugitive')]] }
+    use { 'tpope/vim-fugitive', config = [[require('config.vim-fugitive')]] }
     use { "NeogitOrg/neogit",
         requires = {
             "nvim-lua/plenary.nvim",
