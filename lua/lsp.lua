@@ -3,10 +3,17 @@ local lsp_servers = {
     'pylsp',
     'lua_ls',
     'rust_analyzer',
-    'tsserver',
+    'clangd',
+    'ts_ls',
     'html',
     'yamlls',
+    'tailwindcss',
+    'rust_analyzer',
+    'lemminx',
+    'jsonls',
+    'eslint',
 }
+
 
 
 local mason = require('mason')
@@ -56,6 +63,10 @@ local on_attach = function(client, bufnr)
     end, opts)
 end
 
+lspconfig.html.setup {
+    on_attach = on_attach,
+}
+
 lspconfig.pylsp.setup({
     on_attach = on_attach,
     init_options = {
@@ -73,6 +84,26 @@ lspconfig.pylsp.setup({
     }
 })
 
+lspconfig.jsonls.setup {
+    on_attach = on_attach,
+    commands = {
+        Format = {
+            function()
+                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+            end
+        }
+    }
+}
+
+lspconfig.clangd.setup {}
+
+lspconfig.ts_ls.setup {
+    on_attach = on_attach,
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
+    cmd = { "typescript-language-server", "--stdio" }
+}
+
+lspconfig.tailwindcss.setup {}
 
 lspconfig.lua_ls.setup {
     on_attach = on_attach,
@@ -80,6 +111,41 @@ lspconfig.lua_ls.setup {
         Lua = {
             diagnostics = {
                 globals = { 'vim' }
+            }
+        }
+    }
+}
+
+lspconfig.lemminx.setup {
+    on_attach = on_attach,
+}
+
+lspconfig.eslint.setup({
+    on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+        })
+    end,
+})
+
+
+-- rust
+local mason_dap = require('mason-nvim-dap')
+
+mason_dap.setup({
+    ensure_installed = {
+        'codelldp',
+        "cpptools",
+    },
+})
+
+lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy"
             }
         }
     }
