@@ -72,6 +72,7 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }
     use { 'williamboman/mason.nvim' }
     use { 'williamboman/mason-lspconfig.nvim' }
+    use { "jay-babu/mason-nvim-dap.nvim" }
     use { 'L3MON4D3/LuaSnip' }
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'tpope/vim-fugitive', config = [[require('config.vim-fugitive')]] }
@@ -86,10 +87,12 @@ return require('packer').startup(function(use)
     use { "akinsho/toggleterm.nvim", tag = '*', config = [[require('config.terminal')]] }
     use 'folke/neodev.nvim'
     use { 'nvim-treesitter/nvim-treesitter', config = [[require('config.treesitter')]] }
+    use 'simrat39/rust-tools.nvim'
     use { 'mfussenegger/nvim-dap', config = [[require('config.dap')]],
         requires = {
             'mfussenegger/nvim-dap-python',
             'rcarriga/nvim-dap-ui',
+            'simrat39/rust-tools.nvim',
             'ldelossa/nvim-dap-projects'
         }
     }
@@ -109,7 +112,8 @@ return require('packer').startup(function(use)
         -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
         -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
         config = function()
-            require('render-markdown').setup({})
+            require('render-markdown').setup({
+            })
         end,
     })
     use {

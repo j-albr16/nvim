@@ -33,10 +33,11 @@ local mapping = {
         desc = "Obsidian",
         mode = { "n", 'v' },
         { '<leader>oo', '<cmd>:ObsidianOpen<CR>',              desc = 'Open Obsidian' },
+        { '<leader>oa', '<cmd>:ObsidianTags<CR>',              desc = 'Search for Tags' },
         {
             '<leader>on', ':ObsidianNew<CR>', desc = 'New Note'
         },
-        { '<leader>os', '<cmd>:ObsidianSearch<CR>',            desc = 'Quick Search' },
+        { '<leader>os', '<cmd>:ObsidianSearch<CR>',            desc = 'Search' },
         { '<leader>of', '<cmd>:ObsidianFollowLink vsplit<CR>', desc = 'Follow a Link' },
         { '<leader>ol', '<cmd>:ObsidianBacklinks<CR>',         desc = 'List Backlinks' },
         {
@@ -45,7 +46,7 @@ local mapping = {
             desc =
             'to open a picker list of daily notes. For example, :ObsidianDailies -2 1'
         },
-        { '<leader>ot',  '<cmd>:ObsidianTemplate<CR>',    desc = 'to insert a template from the templates folder' },
+        { '<leader>ot',  '<cmd>:ObsidianTemplate<CR>',    desc = 'Insert Template' },
         { '<leader>oln', '<cmd>:ObsidianLinkNew<CR>',     desc = 'to create a new note and link it to an inline visual selection of text.' },
         { '<leader>oe',  '<cmd>:ObsidianExtractNote<CR>', desc = 'to extract the visually selected text into a new note and link to it.' },
         { '<leader>ow',  '<cmd>:ObsidianWorkspace<CR>',   desc = 'Change Workspace' },

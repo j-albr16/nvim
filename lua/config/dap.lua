@@ -8,12 +8,12 @@ local widgets = require('dap.ui.widgets')
 local widget_view = widgets.centered_float(widgets.scopes)
 widget_view.close()
 
+
 dap_project.config_paths = { './nvim-dap.lua' }
 dap_project.search_project_config()
 
 dap_python.setup('~/.config/nvim/.virtualenvs/debugpy/bin/python')
 dap_python.test_runner = 'pytest'
-
 
 
 local debug_method = function()
@@ -84,4 +84,22 @@ dapui.setup {
         position = "bottom",
         size = 13
     } },
+}
+
+-- rust
+
+local mason_registry = require('mason-registry')
+
+local codelldb = mason_registry.get_package('codelldb')
+local extension_path = codelldb:get_install_path() .. '/extension/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+
+dap.adapters.codelldb = {
+    type = 'server',
+    command = codelldb_path,
+    port = "${port}",
+    executable = {
+        command = codelldb_path,
+        args = { '--port', '${port}' }
+    },
 }

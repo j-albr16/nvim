@@ -8,10 +8,12 @@ local lsp_servers = {
     'html',
     'yamlls',
     'tailwindcss',
+    'rust_analyzer',
     'lemminx',
     'jsonls',
     'eslint',
 }
+
 
 
 local mason = require('mason')
@@ -126,3 +128,25 @@ lspconfig.eslint.setup({
         })
     end,
 })
+
+
+-- rust
+local mason_dap = require('mason-nvim-dap')
+
+mason_dap.setup({
+    ensure_installed = {
+        'codelldp',
+        "cpptools",
+    },
+})
+
+lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy"
+            }
+        }
+    }
+}
