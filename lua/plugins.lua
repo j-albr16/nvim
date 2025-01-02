@@ -124,6 +124,12 @@ return require('packer').startup(function(use)
         },
         config = [[require('config.obsidian')]],
     }
+    use { 'rcarriga/nvim-notify',
+        config = function()
+            vim.notify = require('notify')
+        end
+    }
+
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim
