@@ -140,6 +140,11 @@ return require('packer').startup(function(use)
             "vhyrro/luarocks.nvim",
         },
         config = [[require('config.image')]],
+	}
+    use { 'rcarriga/nvim-notify',
+        config = function()
+            vim.notify = require('notify')
+        end
     }
 
 

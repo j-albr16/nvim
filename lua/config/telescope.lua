@@ -9,6 +9,7 @@ local opts = {
 vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
 vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
 vim.keymap.set('n', '<leader>fg', builtin.git_files, opts)
+vim.keymap.set('n', '<leader>fn', ':Telescope notify<CR>', opts)
 vim.keymap.set('n', '<leader>fs', builtin.live_grep, opts)
 vim.keymap.set('n', '<leader>fh', builtin.commands, opts)
 vim.keymap.set('n', '<C-f>', function ()
