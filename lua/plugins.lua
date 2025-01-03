@@ -124,6 +124,24 @@ return require('packer').startup(function(use)
         },
         config = [[require('config.obsidian')]],
     }
+    use {
+        "mrjones2014/smart-splits.nvim"
+    }
+    use {
+        "vhyrro/luarocks.nvim",
+        priority = 1001, -- this plugin needs to run before anything else
+        opts = {
+            rocks = { "magick" },
+        },
+    }
+    use {
+        "3rd/image.nvim",
+        requires = {
+            "vhyrro/luarocks.nvim",
+        },
+        config = [[require('config.image')]],
+    }
+
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim
