@@ -144,10 +144,14 @@ return require('packer').startup(function(use)
         opt = true,
         cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
         event = { 'User KittyScrollbackLaunch' },
-        -- tag = '*', -- latest stable version, may have breaking changes if major version changed
-        -- tag = 'v6.0.0', -- pin specific tag
         config = function()
-            require('kitty-scrollback').setup()
+            require('kitty-scrollback').setup({
+                {
+                    paste_window = {
+                        yank_register = '"',
+                    }
+                }
+            })
         end,
     })
 
