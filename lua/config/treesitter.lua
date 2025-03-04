@@ -6,7 +6,7 @@ require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
     },
-    ensure_installed = { "html", "yaml", "rust", "c", "lua", "vim", "vimdoc", "query", "python", "markdown", "markdown_inline" },
+    ensure_installed = { "html", "yaml", "rust", "c", "lua", "vim", "vimdoc", "query", "python", "markdown", "markdown_inline" , "java"},
     inore_install = { 'javascript', 'typescript', 'tsx' }
 }
 

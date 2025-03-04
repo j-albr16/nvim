@@ -62,4 +62,18 @@ local mapping = {
     }
 }
 
+local tab_mappings = {
+    desc = "Tabs",
+    {
+        { '<leader>tn', ":tabnew<CR>", desc = "New Tab" },
+        { '<leader>tc', ":tabclose<CR>", desc = "Close Tab" },
+        { '<leader>to', ":tabonly<CR>", desc = "Close all other tabs" },
+        { '<leader>tl', ":tabnext<CR>", desc = "Next Tab" },
+        { '<leader>th', ":tabprevious<CR>", desc = "Previous Tab" },
+        { '<leader>te', ":tabedit<CR>", desc = "Edit Tab" },
+        { '<leader>ts', ":tab split<CR>", desc = "Split Tab" },
+    }
+}
+
 wk.add(mapping)
+wk.add(tab_mappings)

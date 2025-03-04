@@ -19,7 +19,13 @@ local lsp_servers = {
 local mason = require('mason')
 local mason_lsp = require('mason-lspconfig')
 
+local registries = {
+    "github:nvim-java/mason-registry",
+    "github:mason-org/mason-registry"
+}
+
 mason.setup({
+    registries = registries,
     ui = {
         icons = {
             package_installed = "✓",
@@ -150,3 +156,6 @@ lspconfig.rust_analyzer.setup {
         }
     }
 }
+
+require('java').setup({})
+lspconfig.jdtls.setup {}

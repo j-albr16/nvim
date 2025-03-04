@@ -124,28 +124,20 @@ return require('packer').startup(function(use)
         },
         config = [[require('config.obsidian')]],
     }
-    use {
-        "mrjones2014/smart-splits.nvim"
-    }
-    use {
-        "vhyrro/luarocks.nvim",
-        priority = 1001, -- this plugin needs to run before anything else
-        opts = {
-            rocks = { "magick" },
-        },
-    }
-    use {
-        "3rd/image.nvim",
-        requires = {
-            "vhyrro/luarocks.nvim",
-        },
-        config = [[require('config.image')]],
-    }
     use { 'rcarriga/nvim-notify',
         config = function()
             vim.notify = require('notify')
         end
     }
+    use 'nvim-java/lua-async-await'
+    use 'nvim-java/nvim-java-refactor'
+    use 'nvim-java/nvim-java-core'
+    use 'nvim-java/nvim-java-test'
+    use 'nvim-java/nvim-java-dap'
+    use 'MunifTanjim/nui.nvim'
+    use 'nvim-java/nvim-java'
+    use 'JavaHello/spring-boot.nvim'
+
     use({
         'mikesmithgh/kitty-scrollback.nvim',
         disable = false,
@@ -158,7 +150,6 @@ return require('packer').startup(function(use)
             require('kitty-scrollback').setup()
         end,
     })
-
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim

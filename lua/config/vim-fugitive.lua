@@ -18,12 +18,12 @@ local mappings = {
         -- { '<leader>gw', '<cmd>:Git write<CR>',     desc = 'Write' },
         -- { '<leader>gm', '<cmd>:Git mergetool<CR>', desc = 'Merge' },
         { '<leader>gb', '<cmd>:Git blame<CR>',     desc = 'Blame' },
-        -- { '<leader>gd', '<cmd>:Gvdiffsplit!<CR>',  desc = 'Diff Split' },
+        { '<leader>gd', '<cmd>:Gvdiffsplit!<CR>',  desc = 'Diff Split' },
         -- { '<leader>gg', '<cmd>:Git <CR>',          desc = 'Open Git' },
         -- { '<leader>gv', '<cmd>:GV <CR>',           desc = 'Open Git Graph' },
         -- { '<leader>gr', '<cmd>:GRemove<CR>',       desc = 'Git Remove' },
-        -- { '<leader>gh', '<cmd>:diffget //2<CR>',   desc = 'Diff Get Left' },
-        -- { '<leader>gl', '<cmd>:diffget //3<CR>',   desc = 'Diff Get Right' },
+        { '<leader>gh', '<cmd>:diffget //2<CR>',   desc = 'Diff Get Left' },
+        { '<leader>gl', '<cmd>:diffget //3<CR>',   desc = 'Diff Get Right' },
     },
 }
 
