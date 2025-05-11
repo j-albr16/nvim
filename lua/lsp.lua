@@ -135,6 +135,13 @@ lspconfig.eslint.setup({
     end,
 })
 
+lspconfig.ltex.setup {
+    -- on_attach = on_attach,
+    -- ltex = {
+    --     language = "en-GB",
+    -- },
+}
+
 
 -- rust
 local mason_dap = require('mason-nvim-dap')
@@ -157,5 +164,5 @@ lspconfig.rust_analyzer.setup {
     }
 }
 
-require('java').setup({})
-lspconfig.jdtls.setup {}
+-- require('java').setup({})
+-- lspconfig.jdtls.setup {}

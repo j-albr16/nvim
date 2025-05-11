@@ -57,7 +57,7 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
         config = [[require('config.telescope')]]
     }
-    use { 'github/copilot.vim' }
+    -- use { 'github/copilot.vim' }
     use { 'ThePrimeagen/harpoon',
         config = [[require('config.harpoon')]],
         branch = 'harpoon2',
@@ -129,14 +129,14 @@ return require('packer').startup(function(use)
             vim.notify = require('notify')
         end
     }
-    use 'nvim-java/lua-async-await'
-    use 'nvim-java/nvim-java-refactor'
-    use 'nvim-java/nvim-java-core'
-    use 'nvim-java/nvim-java-test'
-    use 'nvim-java/nvim-java-dap'
-    use 'MunifTanjim/nui.nvim'
-    use 'nvim-java/nvim-java'
-    use 'JavaHello/spring-boot.nvim'
+    -- use 'nvim-java/lua-async-await'
+    -- use 'nvim-java/nvim-java-refactor'
+    -- use 'nvim-java/nvim-java-core'
+    -- use 'nvim-java/nvim-java-test'
+    -- use 'nvim-java/nvim-java-dap'
+    -- use 'MunifTanjim/nui.nvim'
+    -- use 'nvim-java/nvim-java'
+    -- use 'JavaHello/spring-boot.nvim'
 
     use({
         'mikesmithgh/kitty-scrollback.nvim',
@@ -154,6 +154,12 @@ return require('packer').startup(function(use)
             })
         end,
     })
+    use({
+        "folke/trouble.nvim",
+        config = [[require('config.trouble')]],
+    })
+    -- use 'luk400/vim-jukit'
+    use({ "kiyoon/jupynium.nvim" })
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim
