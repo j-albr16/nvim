@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?.lua;/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1741730670/share/lua/5.1/?/init.lua;/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?.lua;/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1741730670/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1741730670/lib/lua/5.1/?.so"
+local package_path_str = "/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?.lua;/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?/init.lua;/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?.lua;/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/scrutycs/.cache/nvim/packer_hererocks/2.1.1744318430/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,6 +74,12 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["CopilotChat.nvim"] = {
+    config = { "require('config.copilot')" },
+    loaded = true,
+    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/CopilotChat.nvim",
+    url = "https://github.com/CopilotC-Nvim/CopilotChat.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -121,6 +127,17 @@ _G.packer_plugins = {
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["conform.nvim"] = {
+    config = { "\27LJ\2\n´\2\0\0\5\0\14\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\f\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\0035\4\n\0=\4\v\3=\3\r\2B\0\2\1K\0\1\0\21formatters_by_ft\1\0\1\21formatters_by_ft\0\15javascript\1\3\1\0\14prettierd\rprettier\21stop_after_first\2\trust\1\2\1\0\frustfmt\15lsp_format\rfallback\vpython\1\4\0\0\nisort\nblack\16ruff_format\blua\1\0\4\blua\0\vpython\0\trust\0\15javascript\0\1\2\0\0\vstylua\nsetup\fconform\frequire\0" },
+    loaded = true,
+    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/conform.nvim",
+    url = "https://github.com/stevearc/conform.nvim"
+  },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["diffview.nvim"] = {
     loaded = true,
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/diffview.nvim",
@@ -138,6 +155,7 @@ _G.packer_plugins = {
     url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["jupynium.nvim"] = {
+    config = { "require('config.jupynium')" },
     loaded = true,
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/jupynium.nvim",
     url = "https://github.com/kiyoon/jupynium.nvim"
@@ -332,6 +350,12 @@ _G.packer_plugins = {
     path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["typst-preview.nvim"] = {
+    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18typst-preview\frequire\0" },
+    loaded = true,
+    path = "/home/scrutycs/.local/share/nvim/site/pack/packer/start/typst-preview.nvim",
+    url = "https://github.com/chomosuke/typst-preview.nvim"
+  },
   ultisnips = {
     config = { "require('config.ultisnips')" },
     loaded = true,
@@ -376,38 +400,46 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: typst-preview.nvim
+time([[Config for typst-preview.nvim]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18typst-preview\frequire\0", "config", "typst-preview.nvim")
+time([[Config for typst-preview.nvim]], false)
 -- Config for: oil.nvim
 time([[Config for oil.nvim]], true)
 require('config.oil')
 time([[Config for oil.nvim]], false)
+-- Config for: ultisnips
+time([[Config for ultisnips]], true)
+require('config.ultisnips')
+time([[Config for ultisnips]], false)
+-- Config for: conform.nvim
+time([[Config for conform.nvim]], true)
+try_loadstring("\27LJ\2\n´\2\0\0\5\0\14\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\f\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\0035\4\n\0=\4\v\3=\3\r\2B\0\2\1K\0\1\0\21formatters_by_ft\1\0\1\21formatters_by_ft\0\15javascript\1\3\1\0\14prettierd\rprettier\21stop_after_first\2\trust\1\2\1\0\frustfmt\15lsp_format\rfallback\vpython\1\4\0\0\nisort\nblack\16ruff_format\blua\1\0\4\blua\0\vpython\0\trust\0\15javascript\0\1\2\0\0\vstylua\nsetup\fconform\frequire\0", "config", "conform.nvim")
+time([[Config for conform.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('config.nvim-cmp')
+time([[Config for nvim-cmp]], false)
+-- Config for: undotree
+time([[Config for undotree]], true)
+require('config.undotree')
+time([[Config for undotree]], false)
 -- Config for: vim-fugitive
 time([[Config for vim-fugitive]], true)
 require('config.vim-fugitive')
 time([[Config for vim-fugitive]], false)
--- Config for: nvim-comment
-time([[Config for nvim-comment]], true)
-require('config.nvim_comment')
-time([[Config for nvim-comment]], false)
--- Config for: vimtex
-time([[Config for vimtex]], true)
-require('config.vimtex')
-time([[Config for vimtex]], false)
 -- Config for: prettier.nvim
 time([[Config for prettier.nvim]], true)
 require('config.prettier')
 time([[Config for prettier.nvim]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-require('config.dap')
-time([[Config for nvim-dap]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-require('config.which-key')
-time([[Config for which-key.nvim]], false)
--- Config for: zen-mode.nvim
-time([[Config for zen-mode.nvim]], true)
-require('config.zen-mode')
-time([[Config for zen-mode.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('config.treesitter')
+time([[Config for nvim-treesitter]], false)
+-- Config for: vimtex
+time([[Config for vimtex]], true)
+require('config.vimtex')
+time([[Config for vimtex]], false)
 -- Config for: harpoon
 time([[Config for harpoon]], true)
 require('config.harpoon')
@@ -416,6 +448,18 @@ time([[Config for harpoon]], false)
 time([[Config for nvim-notify]], true)
 try_loadstring("\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0", "config", "nvim-notify")
 time([[Config for nvim-notify]], false)
+-- Config for: neogit
+time([[Config for neogit]], true)
+require('config.neogit')
+time([[Config for neogit]], false)
+-- Config for: jupynium.nvim
+time([[Config for jupynium.nvim]], true)
+require('config.jupynium')
+time([[Config for jupynium.nvim]], false)
+-- Config for: zen-mode.nvim
+time([[Config for zen-mode.nvim]], true)
+require('config.zen-mode')
+time([[Config for zen-mode.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('config.telescope')
@@ -424,60 +468,49 @@ time([[Config for telescope.nvim]], false)
 time([[Config for toggleterm.nvim]], true)
 require('config.terminal')
 time([[Config for toggleterm.nvim]], false)
+-- Config for: nvim-comment
+time([[Config for nvim-comment]], true)
+require('config.nvim_comment')
+time([[Config for nvim-comment]], false)
 -- Config for: nvim-ts-autotag
 time([[Config for nvim-ts-autotag]], true)
 require('config.ts-autotags')
 time([[Config for nvim-ts-autotag]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require('config.dap')
+time([[Config for nvim-dap]], false)
+-- Config for: CopilotChat.nvim
+time([[Config for CopilotChat.nvim]], true)
+require('config.copilot')
+time([[Config for CopilotChat.nvim]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 require('config.trouble')
 time([[Config for trouble.nvim]], false)
--- Config for: ultisnips
-time([[Config for ultisnips]], true)
-require('config.ultisnips')
-time([[Config for ultisnips]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require('config.nvim-cmp')
-time([[Config for nvim-cmp]], false)
--- Config for: neogit
-time([[Config for neogit]], true)
-require('config.neogit')
-time([[Config for neogit]], false)
 -- Config for: obsidian.nvim
 time([[Config for obsidian.nvim]], true)
 require('config.obsidian')
 time([[Config for obsidian.nvim]], false)
--- Config for: undotree
-time([[Config for undotree]], true)
-require('config.undotree')
-time([[Config for undotree]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('config.treesitter')
-time([[Config for nvim-treesitter]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+require('config.which-key')
+time([[Config for which-key.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd cmp-nvim-lsp ]]
+vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd cmp-cmdline ]]
 vim.cmd [[ packadd render-markdown.nvim ]]
 
 -- Config for: render-markdown.nvim
 try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0", "config", "render-markdown.nvim")
 
-vim.cmd [[ packadd cmp-buffer ]]
-vim.cmd [[ packadd cmp-cmdline ]]
-vim.cmd [[ packadd cmp-nvim-lsp ]]
-vim.cmd [[ packadd cmp-path ]]
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'KittyScrollbackGenerateCommandLineEditing', function(cmdargs)
-          require('packer.load')({'kitty-scrollback.nvim'}, { cmd = 'KittyScrollbackGenerateCommandLineEditing', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'kitty-scrollback.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('KittyScrollbackGenerateCommandLineEditing ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'KittyScrollbackGenerateKittens', function(cmdargs)
           require('packer.load')({'kitty-scrollback.nvim'}, { cmd = 'KittyScrollbackGenerateKittens', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -491,6 +524,13 @@ pcall(vim.api.nvim_create_user_command, 'KittyScrollbackCheckHealth', function(c
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'kitty-scrollback.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('KittyScrollbackCheckHealth ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'KittyScrollbackGenerateCommandLineEditing', function(cmdargs)
+          require('packer.load')({'kitty-scrollback.nvim'}, { cmd = 'KittyScrollbackGenerateCommandLineEditing', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'kitty-scrollback.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('KittyScrollbackGenerateCommandLineEditing ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
 

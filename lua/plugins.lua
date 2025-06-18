@@ -57,7 +57,6 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
         config = [[require('config.telescope')]]
     }
-    -- use { 'github/copilot.vim' }
     use { 'ThePrimeagen/harpoon',
         config = [[require('config.harpoon')]],
         branch = 'harpoon2',
@@ -158,8 +157,34 @@ return require('packer').startup(function(use)
         "folke/trouble.nvim",
         config = [[require('config.trouble')]],
     })
-    -- use 'luk400/vim-jukit'
-    use({ "kiyoon/jupynium.nvim" })
+    use({ "kiyoon/jupynium.nvim",
+        config = [[require('config.jupynium')]]
+    })
+    use {
+        'chomosuke/typst-preview.nvim',
+        tag = 'v1.*',
+        config = function()
+            require 'typst-preview'.setup {}
+        end,
+    }
+    use({
+        "stevearc/conform.nvim",
+        config = function()
+            require("conform").setup({
+                formatters_by_ft = {
+                    lua = { "stylua" },
+                    python = { "isort", "black" , "ruff_format"},
+                    rust = { "rustfmt", lsp_format = "fallback" },
+                    javascript = { "prettierd", "prettier", stop_after_first = true },
+                },
+            })
+        end,
+
+    })
+    use ({ 'github/copilot.vim'})
+    use({"CopilotC-Nvim/CopilotChat.nvim", 
+        config = [[require('config.copilot')]],
+    })
 
 
     -- Automatically set up your configuration\ after cloning packer.nvim
