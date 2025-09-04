@@ -26,8 +26,7 @@ local registries = {
 }
 
 mason.setup({
-	registries = registries,
-	ui = {
+	registries = registries,ui = {
 		icons = {
 			package_installed = "✓",
 			package_pending = "➜",
