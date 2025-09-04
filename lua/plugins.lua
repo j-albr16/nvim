@@ -181,11 +181,12 @@ return require('packer').startup(function(use)
         end,
 
     })
-    use ({ 'github/copilot.vim'})
+    -- use ({ 'github/copilot.vim'})
+    use "vhyrro/luarocks.nvim"
     use({"CopilotC-Nvim/CopilotChat.nvim", 
         config = [[require('config.copilot')]],
     })
-
+    use({'3rd/image.nvim', config = [[require('config.image')]]})
 
     -- Automatically set up your configuration\ after cloning packer.nvim
     -- Put this at the end after all plugins
