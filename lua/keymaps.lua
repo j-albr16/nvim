@@ -27,9 +27,6 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
--- search mode
-vim.keymap.set('n', '<C-p>', ':Ex<CR>')
-
 -- smart pasting
 vim.keymap.set('x', '<leader>p', '\"_dP', opts)
 

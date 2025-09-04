@@ -3,6 +3,7 @@ local lsp_servers = {
 	-- 'pylsp',
 	"pyright",
 	"lua_ls",
+	"ltex",
 	"rust_analyzer",
 	"clangd",
 	"ts_ls",
@@ -10,6 +11,7 @@ local lsp_servers = {
 	"yamlls",
 	"tailwindcss",
 	"rust_analyzer",
+	"marksman",
 	"lemminx",
 	"jsonls",
 	"eslint",
@@ -117,7 +119,7 @@ lspconfig.pyright.setup({
 	python = {
 		analysis = {
 			typeCheckingMode = "basic",
-            reportAttributeAccess = false
+			reportAttributeAccess = false,
 		},
 	},
 	init_options = {
@@ -170,12 +172,7 @@ lspconfig.eslint.setup({
 	end,
 })
 
-lspconfig.ltex.setup({
-	-- on_attach = on_attach,
-	-- ltex = {
-	--     language = "en-GB",
-	-- },
-})
+lspconfig.ltex.setup({})
 
 -- rust
 local mason_dap = require("mason-nvim-dap")

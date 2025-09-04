@@ -202,5 +202,4 @@ local config = {
 }
 
 require("oil").setup(config)
-
 vim.keymap.set("n", "<C-p>", "<CMD>Oil<CR>", { desc = "Open parent directory" })

@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 })
 
 
-require('plugins')
+require('config.lazy')
 require('options')
 require('keymaps')
 require('colorscheme')
