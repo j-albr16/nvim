@@ -33,4 +33,4 @@ Horizontal1 = Terminal:new({ cmd = vim.o.shell, on_create = on_create, hidden = 
 
 
 vim.keymap.set('t', '<C-e>', '<C-\\><C-n>', { silent = true })
-vim.keymap.set({ "n", 't' }, '<C-n>', '<cmd>lua horizontal1:toggle()<CR>', { silent = true })
+vim.keymap.set({ "n", 't' }, '<C-n>', '<cmd>lua Horizontal1:toggle()<CR>', { silent = true })
