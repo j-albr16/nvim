@@ -8,6 +8,8 @@ local opts = {
 -- Terminal mode -
 ------------------
 --
+vim.keymap.set('i', '<Tab>', '<Tab>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Tab>', '<Tab>', { noremap = true, silent = true })
 -----------------
 -- Normal mode --
 -----------------

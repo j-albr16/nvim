@@ -10,7 +10,6 @@ local lsp_servers = {
 	"html",
 	"yamlls",
 	"tailwindcss",
-	"rust_analyzer",
 	"marksman",
 	"lemminx",
 	"jsonls",
@@ -26,7 +25,8 @@ local registries = {
 }
 
 mason.setup({
-	registries = registries,ui = {
+	registries = registries,
+	ui = {
 		icons = {
 			package_installed = "✓",
 			package_pending = "➜",
@@ -39,17 +39,9 @@ mason_lsp.setup({
 	ensure_installed = lsp_servers,
 })
 
--- Customized on_attach function
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	local conform = require("conform")
@@ -147,8 +139,7 @@ lspconfig.ts_ls.setup({
 
 lspconfig.tailwindcss.setup({})
 
-lspconfig.lua_ls.setup({
-	on_attach = on_attach,
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -163,7 +154,7 @@ lspconfig.lemminx.setup({
 })
 
 lspconfig.eslint.setup({
-	on_attach = function(client, bufnr)
+	on_attach = function(_, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			buffer = bufnr,
 			command = "EslintFixAll",

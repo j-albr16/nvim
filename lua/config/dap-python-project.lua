@@ -1,3 +1,5 @@
+
+---@diagnostic disable: lowercase-global
 local dap = require('dap')
 
 local current_dir = vim.fn.expand('%:p:h') .. '/'

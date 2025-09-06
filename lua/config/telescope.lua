@@ -16,6 +16,7 @@ vim.keymap.set('n', '<C-f>', function ()
         builtin.grep_string({ search = vim.fn.input("Grep String > ") })
 end, opts)
 
+local open_with_trouble = require("trouble.sources.telescope").open
 
 require('telescope').setup({
     defaults = {
@@ -34,6 +35,7 @@ require('telescope').setup({
                 ["<C-b>"] = "preview_scrolling_down",
                 ["<C-j>"] = actions.toggle_selection + actions.move_selection_next,
                 ["<C-k>"] = actions.toggle_selection + actions.move_selection_previous,
+                ["<C-t>"] = open_with_trouble,
             }
         }
     },

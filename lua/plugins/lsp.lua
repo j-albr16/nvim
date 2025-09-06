@@ -25,4 +25,7 @@ return {
     { 'hrsh7th/cmp-cmdline', dependencies = { 'nvim-cmp' } },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
+    { "folke/neodev.nvim", opts = {}, config = function ()
+        require("neodev").setup({})
+    end },
 }
