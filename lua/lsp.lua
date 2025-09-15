@@ -140,6 +140,7 @@ lspconfig.ts_ls.setup({
 lspconfig.tailwindcss.setup({})
 
 vim.lsp.config("lua_ls", {
+    on_attach = on_attach,
 	settings = {
 		Lua = {
 			diagnostics = {
