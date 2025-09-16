@@ -1,19 +1,16 @@
+
+vim.fn.mkdir(vim.fn.expand('~/vaults/uni'), 'p')
+vim.fn.mkdir(vim.fn.expand('~/vaults/templates'), 'p')
+
 local obsidian = require("obsidian")
 local wk = require('which-key')
+
 
 obsidian.setup({
     workspaces = {
         {
-            name = "personal",
-            path = "~/notes/personal",
-        },
-        {
-            name = "work",
-            path = "~/notes/work",
-        },
-        {
             name = "uni",
-            path = "~/notes/uni",
+            path = "~/vaults/uni",
         },
     },
     ui = {
