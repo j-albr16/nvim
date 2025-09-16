@@ -1,4 +1,6 @@
 local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
+
 local lsp_servers = {
 	-- 'pylsp',
 	"pyright",
@@ -65,46 +67,6 @@ lspconfig.html.setup({
 	on_attach = on_attach,
 })
 
--- lspconfig.pylsp.setup({
---     on_attach = on_attach,
---     init_options = {
---         formatting = true
---     },
---     settings = {
---         pylsp = {
---             plugins = {
---                 pycodestyle = {
---                     ignore = { 'W391' },
---                     maxLineLength = 100
---                 }
---             }
---         }
---     }
--- })
--- lspconfig.pylsp.setup({
---     on_attach = on_attach,
---     init_options = {
---         formatiing = true,
---     },
---   settings = {
---     pylsp = {
---       configurationSources = { "pyright" }, -- Tell pylsp to use pyright for config if available
---       plugins = {
---         mypy = {
---           enabled = true,
---           report_progress = true,
---           args = { "--check-untyped-defs", "--follow-imports=normal" }, -- Common mypy args
---           executable = "pyright", -- Point to the pyright executable
---         },
---         pyflakes = { enabled = false },
---         flake8 = { enabled = false },
---         mccabe = { enabled = false },
---         pylint = { enabled = false },
---       },
---     },
---   },
--- })
-
 lspconfig.pyright.setup({
 	on_attach = on_attach,
 	python = {
@@ -140,6 +102,7 @@ lspconfig.ts_ls.setup({
 lspconfig.tailwindcss.setup({})
 
 vim.lsp.config("lua_ls", {
+	on_attach = on_attach,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -170,20 +133,35 @@ local mason_dap = require("mason-nvim-dap")
 mason_dap.setup({
 	ensure_installed = {
 		"codelldp",
+		"codelldb",
 		"cpptools",
 	},
 })
 
-lspconfig.rust_analyzer.setup({
+-- vim.g.rustaceanvim.server.on_attach = on_attach
+vim.lsp.config("rust_analyzer", {
 	on_attach = on_attach,
 	settings = {
 		["rust-analyzer"] = {
-			checkOnSave = {
-				command = "clippy",
+			diagnostics = {
+				enable = false,
 			},
 		},
 	},
 })
+
+-- lspconfig.rust_analyzer.setup({
+--     filetypes = {"rust"},
+--     root_dir = util.root_pattern("Cargo.toml"),
+-- 	settings = {
+--
+-- 		["rust-analyzer"] = {
+--         cargo = {
+--             allFeatures = true,
+--           },
+-- 		},
+-- 	},
+-- })
 
 -- require('java').setup({})
 -- lspconfig.jdtls.setup {}
