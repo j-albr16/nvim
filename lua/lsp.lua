@@ -127,6 +127,10 @@ lspconfig.eslint.setup({
 
 lspconfig.ltex.setup({})
 
+lspconfig.marksman.setup({
+	on_attach = on_attach,
+})
+
 -- rust
 local mason_dap = require("mason-nvim-dap")
 
