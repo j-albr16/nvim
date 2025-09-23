@@ -5,6 +5,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
+        filetypes = 'markdown',
 		config = function()
 			require("config.obsidian")
 		end,
