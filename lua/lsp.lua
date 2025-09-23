@@ -1,46 +1,3 @@
-local lspconfig = require("lspconfig")
-local util = require("lspconfig/util")
-
-local lsp_servers = {
-	-- 'pylsp',
-	"pyright",
-	"lua_ls",
-	"ltex",
-	"rust_analyzer",
-	"clangd",
-	"ts_ls",
-	"html",
-	"yamlls",
-	"tailwindcss",
-	"marksman",
-	"lemminx",
-	"jsonls",
-	"eslint",
-}
-
-local mason = require("mason")
-local mason_lsp = require("mason-lspconfig")
-
-local registries = {
-	"github:nvim-java/mason-registry",
-	"github:mason-org/mason-registry",
-}
-
-mason.setup({
-	registries = registries,
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-
-mason_lsp.setup({
-	ensure_installed = lsp_servers,
-})
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
@@ -63,11 +20,8 @@ local on_attach = function(_, bufnr)
 	end, opts)
 end
 
-lspconfig.html.setup({
-	on_attach = on_attach,
-})
 
-lspconfig.pyright.setup({
+vim.lsp.config('pyright', {
 	on_attach = on_attach,
 	python = {
 		analysis = {
@@ -79,27 +33,9 @@ lspconfig.pyright.setup({
 		formatting = true,
 	},
 })
+vim.lsp.enable('pyright')
 
-lspconfig.jsonls.setup({
-	on_attach = on_attach,
-	commands = {
-		Format = {
-			function()
-				vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-			end,
-		},
-	},
-})
 
-lspconfig.clangd.setup({})
-
-lspconfig.ts_ls.setup({
-	on_attach = on_attach,
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
-	cmd = { "typescript-language-server", "--stdio" },
-})
-
-lspconfig.tailwindcss.setup({})
 
 vim.lsp.config("lua_ls", {
 	on_attach = on_attach,
@@ -111,38 +47,8 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
+vim.lsp.enable('lua_ls')
 
-lspconfig.lemminx.setup({
-	on_attach = on_attach,
-})
-
-lspconfig.eslint.setup({
-	on_attach = function(_, bufnr)
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			buffer = bufnr,
-			command = "EslintFixAll",
-		})
-	end,
-})
-
-lspconfig.ltex.setup({})
-
-lspconfig.marksman.setup({
-	on_attach = on_attach,
-})
-
--- rust
-local mason_dap = require("mason-nvim-dap")
-
-mason_dap.setup({
-	ensure_installed = {
-		"codelldp",
-		"codelldb",
-		"cpptools",
-	},
-})
-
--- vim.g.rustaceanvim.server.on_attach = on_attach
 vim.lsp.config("rust_analyzer", {
 	on_attach = on_attach,
 	settings = {
@@ -153,19 +59,7 @@ vim.lsp.config("rust_analyzer", {
 		},
 	},
 })
+vim.lsp.enable('rust_analyzer')
 
--- lspconfig.rust_analyzer.setup({
---     filetypes = {"rust"},
---     root_dir = util.root_pattern("Cargo.toml"),
--- 	settings = {
---
--- 		["rust-analyzer"] = {
---         cargo = {
---             allFeatures = true,
---           },
--- 		},
--- 	},
--- })
 
--- require('java').setup({})
--- lspconfig.jdtls.setup {}
+

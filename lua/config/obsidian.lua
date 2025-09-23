@@ -7,9 +7,7 @@ local wk = require("which-key")
 obsidian.setup({
 
 	completion = {
-		-- Set to false to disable completion.
-		nvim_cmp = true,
-		-- Trigger completion at 2 chars.
+		blink = true,
 		min_chars = 2,
 	},
 	workspaces = {

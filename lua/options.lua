@@ -4,6 +4,7 @@ vim.opt.clipboard = 'unnamedplus'   -- use system clipboard
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.mouse = 'a'                 -- allow the mouse to be used in Nvim
 vim.opt_local.conceallevel = 2      -- Conceal text with concealable characters
+-- vim.opt.loaded_node_provider = 0
 
 -- Tab
 vim.opt.tabstop = 4                 -- number of visual spaces per TAB
