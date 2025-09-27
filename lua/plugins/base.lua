@@ -6,16 +6,6 @@ return {
 		end,
 	},
 	{
-		"SirVer/ultisnips",
-		config = function()
-			vim.cmd([[
-                let g:UltiSnipsSnippetDirectories = ["~/.config/nvim/UltiSnips"]
-                let g:UltiSnipsExpandTrigger = "<a-cr>"
-            ]])
-		end,
-	},
-	"quangnguyen30192/cmp-nvim-ultisnips",
-	{
 		"folke/which-key.nvim",
 		config = function()
 			require("which-key").setup()
