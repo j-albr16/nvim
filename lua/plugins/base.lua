@@ -1,6 +1,5 @@
 return {
-	"nvim-lua/plenary.nvim",
-	{
+{
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("config.treesitter")
@@ -22,7 +21,6 @@ return {
 			require("which-key").setup()
 		end,
 	},
-	"BurntSushi/ripgrep",
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
@@ -45,8 +43,6 @@ return {
 			vim.keymap.set("n", "<leader>i", ":UndotreeToggle<CR>", { noremap = true, silent = true })
 		end,
 	},
-	"L3MON4D3/LuaSnip",
-	"saadparwaiz1/cmp_luasnip",
 	{
 		"NeogitOrg/neogit",
 		dependencies = {
@@ -59,7 +55,6 @@ return {
 	},
 	{
 		"akinsho/toggleterm.nvim",
-		-- tag = '*',
 		config = function()
 			require("config.terminal")
 		end,

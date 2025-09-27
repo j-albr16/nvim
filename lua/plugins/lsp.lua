@@ -1,31 +1,45 @@
 return {
-    'neovim/nvim-lspconfig',
-    {
-        'hrsh7th/nvim-cmp',
-        config = function ()
-            require('config.nvim-cmp')
-        end
-    },
-    {
-        "stevearc/conform.nvim",
-        config = function()
-            require("conform").setup({
-                formatters_by_ft = {
-                    lua = { "stylua" },
-                    python = { "isort", "black" , "ruff_format"},
-                    rust = { "rustfmt", lsp_format = "fallback" },
-                    javascript = { "prettierd", "prettier", stop_after_first = true },
-                },
-            })
-        end,
-    },
-    { 'hrsh7th/cmp-nvim-lsp', dependencies = { 'nvim-cmp' } },
-    { 'hrsh7th/cmp-buffer', dependencies = { 'nvim-cmp' } },
-    { 'hrsh7th/cmp-path', dependencies = { 'nvim-cmp' } },
-    { 'hrsh7th/cmp-cmdline', dependencies = { 'nvim-cmp' } },
-    { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
-    { "folke/neodev.nvim", opts = {}, config = function ()
-        require("neodev").setup({})
-    end },
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					python = { "isort" },
+					rust = { "rustfmt" },
+				},
+			})
+		end,
+	},
+	{
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		version = "1.*",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = {
+				preset = "default",
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+				["<C-s>"] = { "select_and_accept", "fallback" },
+			},
+
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			cmdline = {
+				keymap = {
+					preset = "inherit",
+				},
+				completion = { menu = { auto_show = true } },
+			},
+			completion = { documentation = { auto_show = true }, menu = { auto_show = true } },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
+	},
 }
