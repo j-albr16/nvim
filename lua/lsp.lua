@@ -20,24 +20,26 @@ local on_attach = function(_, bufnr)
 	end, opts)
 end
 
-
-vim.lsp.config('pyright', {
+vim.lsp.config("pyright", {
+	cmd = { "pyright-langserver", "--stdio" },
+	filetypes = { "python" },
+	root_markers = { "pyproject.toml", "setup.py", "requirements.txt", ".git" },
 	on_attach = on_attach,
-	python = {
-		analysis = {
-			typeCheckingMode = "basic",
-			reportAttributeAccess = false,
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "basic",
+				reportAttributeAccess = false,
+			},
 		},
 	},
-	init_options = {
-		formatting = true,
-	},
 })
-vim.lsp.enable('pyright')
-
-
+vim.lsp.enable("pyright")
 
 vim.lsp.config("lua_ls", {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	root_markers = { ".git", ".luarc.json" },
 	on_attach = on_attach,
 	settings = {
 		Lua = {
@@ -47,9 +49,12 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-vim.lsp.enable('lua_ls')
+vim.lsp.enable("lua_ls")
 
 vim.lsp.config("rust_analyzer", {
+	cmd = { "rust-analyzer" },
+	filetypes = { "rust" },
+	root_markers = { "Cargo.toml", ".git" },
 	on_attach = on_attach,
 	settings = {
 		["rust-analyzer"] = {
@@ -59,7 +64,4 @@ vim.lsp.config("rust_analyzer", {
 		},
 	},
 })
-vim.lsp.enable('rust_analyzer')
-
-
-
+vim.lsp.enable("rust_analyzer")
