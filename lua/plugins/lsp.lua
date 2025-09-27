@@ -1,10 +1,5 @@
 return {
     'neovim/nvim-lspconfig',
-    -- {
-    --   'mrcjkb/rustaceanvim',
-    --   version = '^6', -- Recommended
-    --   lazy = false, -- This plugin is already lazy
-    -- },
     {
         'hrsh7th/nvim-cmp',
         config = function ()

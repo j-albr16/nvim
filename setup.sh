@@ -8,3 +8,4 @@ rustup component add rustfmt
 brew install jstkdng/programs/ueberzugpp
 sudo dnf install ImageMagick
 sudo dnf install ImageMagick-devel
+brew install luarocks
